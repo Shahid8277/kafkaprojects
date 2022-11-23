@@ -1,0 +1,31 @@
+server:
+  port: 9009
+spring:
+  kafka:
+    topic: kafka-topic
+    partition-id: 1
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      group-id: group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      
+logging:
+#  pattern:
+#    file: %d [%thread] %cyan(%logger{15}) - %msg %n
+  file:
+    name: C:/Users/User/Documents/LogFile/kafka-producer-service-log.log 
+  level:
+    root: WARN
+    org:
+      hibernate: ERROR   
+    com:
+      technoelevate:
+        kafka: 
+          producer: INFO      
+      

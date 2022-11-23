@@ -1,0 +1,45 @@
+server:
+  port: 9090
+spring:
+  kafka:
+    topic: kafka-topic
+    topics: kafka-topic, test-topic
+    partition-id: 1 
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      group-id: group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-commit-interval: 300000
+      heartbeat-interval: 1000
+      max-poll-records: 100
+      enable-auto-commit: true
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+logging:
+#  pattern:
+#    file: %d [%thread] %cyan(%logger{15}) - %msg %n
+  file:
+    name: C:/Users/User/Documents/LogFile/kafka-consumer-service-log.log 
+  level:
+    root: WARN
+    org:
+      hibernate: ERROR   
+    com:
+      technoelevate:
+        kafka: 
+          consumer: INFO  
+
+
+
+
+
+
+
+
+
+
